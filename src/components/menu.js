@@ -1,15 +1,17 @@
 import React from "react";
 import { useState,useEffect } from "react";
+import { MenuUrl } from "../../utils/mockData";
+import { Params,useParams } from "react-router-dom";
 
-const MenuCard=()=>{
+const MenuCard=(props)=>{
     return <div className="parent">
     <div><h1 className="g-box"><span className="g-circle"></span></h1>
-     <h4 className="item-name">veg biryani</h4>
-     <h4 className="cost">$249/-</h4>
-     <p>ldjiflnfjfoufen fofbfufnojpfq dkjfjbfoifofufbdddddddddoliibndiiiiiiiiiiiiidb</p>
+     <h4 className="item-name">{props.data.card.info.name}</h4>
+     <h4 className="cost">${props.data.card.info.price/100}</h4>
+     <p>{props.data.card.info.description}</p>
      </div>
      <div className="relative">
-    <img className="item-img" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/612ea658231b115828737161c419243c"></img>
+    <img className="item-img" src={MenuUrl+props.data.card.info.imageId}></img>
 <div className="absolute">
    <button className="add-btn">Add</button>
 </div>
@@ -19,34 +21,29 @@ const MenuCard=()=>{
 
 
 const Menu = ()=>{
+  const url="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.217176&lng=79.1003289&restaurantId="
+  const {id}=useParams()
+  const EndUrl="&catalog_qa=undefined&submitAction=ENTER"
     const [menuList,setmenuList]=useState([])
     
   async function menuApi(){
-    const data= await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.217176&lng=79.1003289&restaurantId=363193&catalog_qa=undefined&submitAction=ENTER")
+
+    const data= await fetch(url+id+EndUrl)
     const originalData=await data.json()
-    console.log(originalData.data.cards[2].groupedCards.cardGroupMap.REGULAR.cards[1].card.card.itemCards)
-    // setresto(originalData.data.cards[2].card.card.gridElements.infoWithStyle.restaurants)
-   }
+    console.log(originalData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards)
+    setmenuList(originalData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards)
+    console.log(menuList)
+  }
      useEffect(()=>{
      menuApi()
      },[])
 
     return <div  className="pages">
     <h3>Recomended (7) </h3>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
-        <MenuCard/>
+  {  menuList.map((x)=>{
+      return <MenuCard data={x}/>
+    })
+}
 
     </div>
 }

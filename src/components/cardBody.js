@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import {url} from "../../utils/mockData";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
+import BestFlex from "./best";
 // -----------------------onecard-data-----------------------
 
 const Card=(props)=>( <div className="box">
@@ -78,7 +80,7 @@ const Card=(props)=>( <div className="box">
 {/* ------------------card-flex---------------- */}
       <div className="card-flex">
       {  resto.map((x)=>{
-        return <Card data={x}/>
+        return <Link to={"/restarants/"+x.info.id}> <Card data={x}/></Link>
        })}
        </div>
     </div>
@@ -87,6 +89,8 @@ const Card=(props)=>( <div className="box">
   //  ---------------cordbody-------------------
 const CardBody=()=>{
     return <div className="card-body">
+      <h2 className="heading">Best offers for you</h2>
+      <BestFlex/>
       <h2 className="heading">Restaurants with online food delivery in Chittoor</h2>
       <CardFlex/>
     </div>

@@ -37383,8 +37383,9 @@ var _default = exports.default = Navbar;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.url = exports.default = void 0;
+exports.url = exports.default = exports.MenuUrl = void 0;
 var url = exports.url = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+var MenuUrl = exports.MenuUrl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
 var array = [{
   imgId: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/rtwoqdbuozs6nnhahcoe",
   name: "KFC",
@@ -37549,6 +37550,29 @@ var Shimmer = function Shimmer() {
   }, /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null), /*#__PURE__*/_react.default.createElement(ShimmerCard, null));
 };
 var _default = exports.default = Shimmer;
+},{"react":"node_modules/react/index.js"}],"src/components/best.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var BestCard = function BestCard() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "b-c"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: "b-i",
+    src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/rng/md/carousel/production/731031544495581f1d6884624aa3ecf5"
+  })));
+};
+var BestFlex = function BestFlex() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "b-flex"
+  }, /*#__PURE__*/_react.default.createElement(BestCard, null), /*#__PURE__*/_react.default.createElement(BestCard, null), /*#__PURE__*/_react.default.createElement(BestCard, null), /*#__PURE__*/_react.default.createElement(BestCard, null), /*#__PURE__*/_react.default.createElement(BestCard, null));
+};
+var _default = exports.default = BestFlex;
 },{"react":"node_modules/react/index.js"}],"src/components/cardBody.js":[function(require,module,exports) {
 "use strict";
 
@@ -37560,6 +37584,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _client = _interopRequireDefault(require("react-dom/client"));
 var _mockData = require("../../utils/mockData");
 var _shimmer = _interopRequireDefault(require("./shimmer"));
+var _reactRouterDom = require("react-router-dom");
+var _best = _interopRequireDefault(require("./best"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -37686,9 +37712,11 @@ var CardFlex = function CardFlex() {
     }, "Search"))), /*#__PURE__*/_react.default.createElement("div", {
       className: "card-flex"
     }, resto.map(function (x) {
-      return /*#__PURE__*/_react.default.createElement(Card, {
+      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/restarants/" + x.info.id
+      }, " ", /*#__PURE__*/_react.default.createElement(Card, {
         data: x
-      });
+      }));
     })));
   }
 };
@@ -37698,10 +37726,12 @@ var CardBody = function CardBody() {
     className: "card-body"
   }, /*#__PURE__*/_react.default.createElement("h2", {
     className: "heading"
+  }, "Best offers for you"), /*#__PURE__*/_react.default.createElement(_best.default, null), /*#__PURE__*/_react.default.createElement("h2", {
+    className: "heading"
   }, "Restaurants with online food delivery in Chittoor"), /*#__PURE__*/_react.default.createElement(CardFlex, null));
 };
 var _default = exports.default = CardBody;
-},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","../../utils/mockData":"utils/mockData.js","./shimmer":"src/components/shimmer.js"}],"src/components/body.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","../../utils/mockData":"utils/mockData.js","./shimmer":"src/components/shimmer.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./best":"src/components/best.js"}],"src/components/body.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37771,6 +37801,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
+var _mockData = require("../../utils/mockData");
+var _reactRouterDom = require("react-router-dom");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -37783,7 +37815,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-var MenuCard = function MenuCard() {
+var MenuCard = function MenuCard(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "parent"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", {
@@ -37792,13 +37824,13 @@ var MenuCard = function MenuCard() {
     className: "g-circle"
   })), /*#__PURE__*/_react.default.createElement("h4", {
     className: "item-name"
-  }, "veg biryani"), /*#__PURE__*/_react.default.createElement("h4", {
+  }, props.data.card.info.name), /*#__PURE__*/_react.default.createElement("h4", {
     className: "cost"
-  }, "$249/-"), /*#__PURE__*/_react.default.createElement("p", null, "ldjiflnfjfoufen fofbfufnojpfq dkjfjbfoifofufbdddddddddoliibndiiiiiiiiiiiiidb")), /*#__PURE__*/_react.default.createElement("div", {
+  }, "$", props.data.card.info.price / 100), /*#__PURE__*/_react.default.createElement("p", null, props.data.card.info.description)), /*#__PURE__*/_react.default.createElement("div", {
     className: "relative"
   }, /*#__PURE__*/_react.default.createElement("img", {
     className: "item-img",
-    src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/612ea658231b115828737161c419243c"
+    src: _mockData.MenuUrl + props.data.card.info.imageId
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "absolute"
   }, /*#__PURE__*/_react.default.createElement("button", {
@@ -37806,6 +37838,10 @@ var MenuCard = function MenuCard() {
   }, "Add"))));
 };
 var Menu = function Menu() {
+  var url = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.217176&lng=79.1003289&restaurantId=";
+  var _useParams = (0, _reactRouterDom.useParams)(),
+    id = _useParams.id;
+  var EndUrl = "&catalog_qa=undefined&submitAction=ENTER";
   var _useState = (0, _react.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     menuList = _useState2[0],
@@ -37820,16 +37856,17 @@ var Menu = function Menu() {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.217176&lng=79.1003289&restaurantId=363193&catalog_qa=undefined&submitAction=ENTER");
+            return fetch(url + id + EndUrl);
           case 2:
             data = _context.sent;
             _context.next = 5;
             return data.json();
           case 5:
             originalData = _context.sent;
-            console.log(originalData.data.cards[2].groupedCards.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
-            // setresto(originalData.data.cards[2].card.card.gridElements.infoWithStyle.restaurants)
-          case 7:
+            console.log(originalData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
+            setmenuList(originalData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
+            console.log(menuList);
+          case 9:
           case "end":
             return _context.stop();
         }
@@ -37842,10 +37879,14 @@ var Menu = function Menu() {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "pages"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Recomended (7) "), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null), /*#__PURE__*/_react.default.createElement(MenuCard, null));
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Recomended (7) "), menuList.map(function (x) {
+    return /*#__PURE__*/_react.default.createElement(MenuCard, {
+      data: x
+    });
+  }));
 };
 var _default = exports.default = Menu;
-},{"react":"node_modules/react/index.js"}],"app.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../utils/mockData":"utils/mockData.js","react-router-dom":"node_modules/react-router-dom/dist/index.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -37876,7 +37917,7 @@ var ways = (0, _reactRouterDom.createBrowserRouter)([{
     path: "/help",
     element: /*#__PURE__*/_react.default.createElement(_help.default, null)
   }, {
-    path: "/restarants/1234",
+    path: "/restarants/:id",
     element: /*#__PURE__*/_react.default.createElement(_menu.default, null)
   }, {
     path: "/offer",
@@ -37912,7 +37953,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59860" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62660" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

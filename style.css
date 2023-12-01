@@ -10,6 +10,7 @@ body {
   border-radius: 15px;
   margin: 5px;
   cursor: pointer;
+  
 }
 .food-img {
   width: 100%;
@@ -241,6 +242,7 @@ z-index: -1;
 }
 .item-img{
 width: 160px;
+height: 130px;
 border-radius: 10px;
 object-fit: cover;
 }
@@ -254,6 +256,21 @@ margin-bottom:-5px;
 border: 1px solid grey;
 border-radius: 5px;
 color: whitesmoke;
-padding: 10px 30px;
+padding: 8px 39px;
 background-color: tomato;
+cursor: pointer;
+}
+
+.b-i{
+  width: 440px;
+  height: 230px;
+  margin: 7px;
+}
+.b-flex{
+display: flex;
+overflow-x: auto;
+margin-bottom: 30px;
+}
+.b-flex::-webkit-scrollbar{
+display: none;
 }

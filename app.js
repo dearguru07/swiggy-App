@@ -32,7 +32,7 @@ const ways=createBrowserRouter(
       element:<Help/>
      },
      {
-      path:"/restarants/1234",
+      path:"/restarants/:id",
       element:<Menu/>
      },
     {
