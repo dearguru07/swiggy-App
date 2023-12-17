@@ -12,7 +12,7 @@ import BestFlex from "./best";
 const Card=(props)=>( <div className="box">
 <img className="food-img" src={url+props.data.info.cloudinaryImageId}></img>
 <h3 className="place">{props.data.info.name} </h3>
-<h3 className="rating">{props.data.info.avgRating} <span><i className="bi bi-star-fill"></i> </span>4.<span>22min</span></h3>
+<h3 className="rating"><span><i className="bi bi-star-fill"></i> </span>{props.data.info.avgRating} .4.<span>22min</span></h3>
 <p className="hotel">{props.data.info.cuisines.join(",")} </p>
 <p className="room">{props.data.info.locality} </p>
 <p className="room"><b>$</b> {props.data.info.feeDetails.fees[0].fee/10.} </p>
