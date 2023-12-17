@@ -260,7 +260,10 @@ padding: 8px 39px;
 background-color: tomato;
 cursor: pointer;
 }
-
+.lines{
+  text-decoration: none;
+  color: black;
+}
 .b-i{
   width: 440px;
   height: 230px;
