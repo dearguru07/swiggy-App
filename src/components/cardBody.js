@@ -80,7 +80,7 @@ const Card=(props)=>( <div className="box">
 {/* ------------------card-flex---------------- */}
       <div className="card-flex">
       {  resto.map((x)=>{
-        return <Link to={"/restarants/"+x.info.id}> <Card data={x}/></Link>
+        return <Link className="lines" to={"/restarants/"+x.info.id}> <Card data={x}/></Link>
        })}
        </div>
     </div>
